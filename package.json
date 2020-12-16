@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/AdityaRawEngg/todo-list-backEnd/issues"
   },
-  "homepage": "https://github.com/AdityaRawEngg/todo-list-backEnd#readme"
+  "homepage": "https://github.com/AdityaRawEngg/todo-list-backEnd#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "uniqid": "^5.2.0"
+  }
 }
