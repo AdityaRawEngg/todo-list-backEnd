@@ -7,10 +7,7 @@ const getAllTask = (req, resp, next) => {
   Task.find(req.query)
     .then((data) => {
       if (data.length == 0) {
-        return sendError(
-          new AppError(404, "Unsuccessful", "No task Found"),
-          resp
-        );
+        return sendResponse(200, "No task found", resp);
       }
       sendResponse(200, data, resp);
     })
@@ -23,8 +20,9 @@ const getSingleTask = (req, resp, next) => {
   Task.findOne(req.params)
     .then((data) => {
       if (data.length == 0) {
-        return sendError(
-          new AppError(404, "Unsuccessful", "Task Not Found"),
+        return sendResponse(
+          200,
+          `No task found with id = ${req.params.taskId}`,
           resp
         );
       }
@@ -51,8 +49,9 @@ const updateOneTask = (req, resp, next) => {
   Task.updateOne(req.params, req.body)
     .then((result) => {
       if (result.nModified == 0) {
-        return sendError(
-          new AppError(404, "Unsuccessful", "Task Not Found"),
+        return sendResponse(
+          200,
+          `No task found with id = ${req.params.taskId}`,
           resp
         );
       }
@@ -71,8 +70,9 @@ const deleteTask = (req, resp, next) => {
   Task.deleteOne(req.params)
     .then((result) => {
       if (result.n == 0) {
-        return sendError(
-          new AppError(404, "Unsuccessful", "Task Not Found"),
+        return sendResponse(
+          200,
+          `No task found with id = ${req.params.taskId}`,
           resp
         );
       }
