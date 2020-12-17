@@ -30,5 +30,9 @@ Task data is stored in Mongodb.
 2. cd blog-backend-nodejs
 3. Run "npm install" in the terminal
 4. rename sample-config.env file to config.env file
-5. Added mongodb connection url to config.env file
+5. Add DATABASE_URL="Your Mongodb URL" to config.env file
 6. run " npm run start" to start the server
+
+# Live Demo
+
+Server is hosted on Heroku with base URL ==> https://todolist-nodejs-server.herokuapp.com/
