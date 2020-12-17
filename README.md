@@ -2,23 +2,25 @@
 
 ## API End Points
 
-The Endpoint to get All the Tasks (using GET method) and
+#### "/todoList/tasks " 
+The Endpoint to:
+  get All the Tasks (using GET method) and
 
-Create new task (using POST method) is:
+  Create new task (using POST method) is:
 
-<lable> "/todoList/tasks " </lable>
+ 
 
-The Endpoint to
+ 
+#### "/todoList/tasks/taskId " (replace taskId with the actual taskId)
+Endpoint to:
 
-get Single Task(using GET method),
+  get Single Task(using GET method),
 
-to update a task (using PUT method) and
+  to update a task (using PUT method) and
 
-delete a task (using DELETE method).
+  delete a task (using DELETE method).
 
-<lable> "/todoList/tasks/taskId "</lable>
-
-replace taskId with the actual taskId
+  
 
 ## Data
 
