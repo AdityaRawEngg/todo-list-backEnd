@@ -41,14 +41,14 @@ const createTask = (req, resp, next) => {
       sendResponse(200, data, resp);
     })
     .catch((err) => {
-      return resp.send(err.message);
+      return sendError(new AppError(500, "Unsuccessful", err.message), resp);
     });
 };
 
 const updateOneTask = (req, resp, next) => {
-  Task.updateOne(req.params, req.body)
+  Task.updateOne(req.params, req.body, { runValidators: true })
     .then((result) => {
-      if (result.nModified == 0) {
+      if (result.ok == 0) {
         return sendResponse(
           200,
           `No task found with id = ${req.params.taskId}`,
@@ -61,8 +61,7 @@ const updateOneTask = (req, resp, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
-      return err;
+      return sendError(new AppError(400, "Unsuccessful", err.message), resp);
     });
 };
 
@@ -82,7 +81,7 @@ const deleteTask = (req, resp, next) => {
       });
     })
     .catch((err) => {
-      return err;
+      return sendError(new AppError(500, "Unsuccessful", err.message), resp);
     });
 };
 
