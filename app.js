@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 const taskRouter = require("./routes/taskRoutes");
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-dotenv.config({ path: "./config.env" });
 app.use(express.json());
 
 mongoose.connect(
@@ -15,9 +16,12 @@ mongoose.connect(
     if (err) {
       return console.log("Error in connection");
     }
+    app.get("/", (req, resp) => {
+      resp.send("Welcome to home page");
+    });
     app.use("/todoList", taskRouter);
-    app.listen(3000, () => {
-      console.log("Server Started");
+    app.listen(PORT, () => {
+      console.log(`Server Started on port ${PORT}`);
     });
   }
 );
