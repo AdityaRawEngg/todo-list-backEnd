@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 dotenv.config({ path: "./config.env" });
 const taskRouter = require("./routes/taskRoutes");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
@@ -14,7 +15,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, connection) => {
     if (err) {
-      return console.log("Error in connection");
+      return console.log("Error in connection", err);
     }
     app.get("/", (req, resp) => {
       resp.send("Welcome to home page");
